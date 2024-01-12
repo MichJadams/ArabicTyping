@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcgcx6mtu5e0c"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_emop5"]
+[ext_resource type="Texture2D" uid="uid://bnj7oej4tusg2" path="res://assets/white_grid.png" id="1_eqom0"]
+[ext_resource type="Script" path="res://scripts/UploadFromFile.gd" id="1_jtuo7"]
+[ext_resource type="Script" path="res://scripts/UploadFileDialog.gd" id="3_igrqs"]
+[ext_resource type="Script" path="res://scripts/RadioButtons.gd" id="5_kiy5b"]
+[ext_resource type="ButtonGroup" uid="uid://d1hbm0s2gulx5" path="res://groups/system_selection_buttons.tres" id="6_anvd2"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_emop5")
+
+[node name="WhiteGrid" type="Sprite2D" parent="."]
+position = Vector2(962.25, 543.5)
+scale = Vector2(0.996614, 0.999074)
+texture = ExtResource("1_eqom0")
+
+[node name="UploadFromFile" type="Button" parent="."]
+layout_mode = 0
+offset_left = 351.0
+offset_top = 563.0
+offset_right = 601.0
+offset_bottom = 613.0
+text = "Upload From File"
+script = ExtResource("1_jtuo7")
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 65.0
+offset_top = -4.0
+offset_right = 172.0
+offset_bottom = 47.0
+text = "Back"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+initial_position = 2
+size = Vector2i(400, 300)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+script = ExtResource("3_igrqs")
+
+[node name="ToLeitnerSystem" type="Button" parent="."]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 414.0
+offset_right = 604.0
+offset_bottom = 464.0
+text = "Leitner System"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 262.0
+offset_right = 408.0
+offset_bottom = 422.0
+script = ExtResource("5_kiy5b")
+
+[node name="UseLeitnerSystem" type="CheckBox" parent="GridContainer" groups=["LearningSystemSelection"]]
+layout_mode = 2
+button_group = ExtResource("6_anvd2")
+
+[node name="UseSimpleQueue" type="CheckBox" parent="GridContainer" groups=["LearningSystemSelection"]]
+layout_mode = 2
+button_group = ExtResource("6_anvd2")
+
+[connection signal="pressed" from="UploadFromFile" to="UploadFromFile" method="_on_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Back" to="Back" method="_on_pressed"]
+[connection signal="file_selected" from="FileDialog" to="FileDialog" method="_on_file_selected"]
+[connection signal="pressed" from="ToLeitnerSystem" to="." method="_on_to_leitner_system_pressed"]
+[connection signal="toggled" from="GridContainer/UseLeitnerSystem" to="GridContainer" method="_on_use_leitner_system_toggled"]
+[connection signal="toggled" from="GridContainer/UseSimpleQueue" to="GridContainer" method="_on_use_simple_queue_toggled"]

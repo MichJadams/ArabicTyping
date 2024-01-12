@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://cov1nldhigxms"]
+
+[ext_resource type="Texture2D" uid="uid://bnj7oej4tusg2" path="res://assets/white_grid.png" id="1_v4mjg"]
+[ext_resource type="Script" path="res://scripts/LeitnerSystem/leitner_viewer_control.gd" id="1_xw0jl"]
+[ext_resource type="Script" path="res://scripts/LeitnerSystem/LeitnerBoxContainer.gd" id="3_k3tvb"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xw0jl")
+
+[node name="WhiteGrid" type="Sprite2D" parent="."]
+position = Vector2(961.375, 531)
+scale = Vector2(1.00169, 0.994444)
+texture = ExtResource("1_v4mjg")
+
+[node name="ToSettings" type="Button" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = -2.0
+offset_right = 106.0
+offset_bottom = 39.0
+text = "Back"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 84.0
+offset_right = 1864.0
+offset_bottom = 984.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+script = ExtResource("3_k3tvb")
+
+[connection signal="pressed" from="ToSettings" to="." method="_on_to_settings_pressed"]

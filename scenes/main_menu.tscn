@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://to3rq41npefl"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_x6ri4"]
+[ext_resource type="Texture2D" uid="uid://bnj7oej4tusg2" path="res://assets/white_grid.png" id="2_np32t"]
+[ext_resource type="Theme" uid="uid://mhsdqp7ljmrw" path="res://scripts/autoload/sandy.tres" id="3_cikaq"]
+[ext_resource type="Texture2D" uid="uid://dyoanalusoa8l" path="res://assets/loading/Arabest_Frames_00066.png" id="4_waijc"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 26.0
+offset_right = 10.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x6ri4")
+
+[node name="WhiteGrid" type="Sprite2D" parent="."]
+position = Vector2(944, 520)
+scale = Vector2(1.00052, 1)
+texture = ExtResource("2_np32t")
+
+[node name="Settings_Button" type="Button" parent="."]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -608.0
+offset_top = 124.0
+offset_right = -408.0
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_cikaq")
+theme_override_colors/icon_normal_color = Color(0.0470588, 0.8, 0.8, 1)
+text = "Settings
+"
+
+[node name="Start_Button" type="Button" parent="."]
+layout_direction = 1
+layout_mode = 2
+offset_left = 355.0
+offset_top = 495.0
+offset_right = 555.0
+offset_bottom = 553.0
+theme = ExtResource("3_cikaq")
+text = "Start"
+
+[node name="ArabestFrames00066" type="Sprite2D" parent="."]
+position = Vector2(1000, 400)
+texture = ExtResource("4_waijc")
+
+[connection signal="pressed" from="Settings_Button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Start_Button" to="." method="_on_start_button_pressed"]
