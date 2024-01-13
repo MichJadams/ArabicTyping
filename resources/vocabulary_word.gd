@@ -7,12 +7,8 @@ class_name VocabularyWord
 @export var presented_count = 0 
 @export var last_date_presented = 0
 @export var id = ""
-@export var length: int = get_length() 
 @export var display_index = 0
 @export var audio: PackedByteArray = []
-
-func get_length():
-	return arabic_word.length()
 	
 func _init(arabicWord = "", englishWord = ""):
 	arabic_word = arabicWord

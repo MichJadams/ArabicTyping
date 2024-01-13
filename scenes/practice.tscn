@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dw30tvbwxl6x5"]
+[gd_scene load_steps=7 format=3 uid="uid://dw30tvbwxl6x5"]
 
 [ext_resource type="Script" path="res://scripts/TargetTextControl.gd" id="1_m5tyi"]
 [ext_resource type="Script" path="res://scripts/PracticeManager.gd" id="1_r3dn7"]
 [ext_resource type="Texture2D" uid="uid://bnj7oej4tusg2" path="res://assets/white_grid.png" id="2_y60vs"]
 [ext_resource type="Theme" uid="uid://mhsdqp7ljmrw" path="res://scripts/autoload/sandy.tres" id="3_xwx3d"]
-[ext_resource type="Script" path="res://scripts/InputText.gd" id="4_7dyqs"]
 [ext_resource type="Script" path="res://scripts/ProgressBar.gd" id="5_40twx"]
 [ext_resource type="Script" path="res://scripts/fetchArabicPronunciation.gd" id="6_kx75t"]
 
@@ -67,7 +66,7 @@ offset_bottom = 74.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 60
-script = ExtResource("4_7dyqs")
+script = ExtResource("1_m5tyi")
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 0

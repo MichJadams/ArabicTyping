@@ -12,7 +12,7 @@ const headers = [
 	]
 @onready var audio_stream_player = $"../AudioStreamPlayer"
 var arabic_word: String 
-
+var word_id: String 
 func _ready():
 	self.request_completed.connect(callback)
 	
@@ -21,6 +21,7 @@ func fetch_arabic_word(word: VocabularyWord):
 		var encoded_word = Marshalls.utf8_to_base64(word.arabic_word) 
 		var final_url = url + params + encoded_word
 		arabic_word = word.arabic_word
+		word_id = word.id
 		request(final_url, headers)
 	else:
 		play_audio(word.audio)
@@ -28,7 +29,7 @@ func fetch_arabic_word(word: VocabularyWord):
 func callback(_result, response_code, _headers, body: PackedByteArray):
 	if response_code == 206:
 		play_audio(body)
-		VocabularyManager.add_pronunciation(arabic_word, body)
+		VocabularyManager.add_pronunciation(word_id, body)
 		
 func play_audio(sound: PackedByteArray):
 	var stream = AudioStreamMP3.new()

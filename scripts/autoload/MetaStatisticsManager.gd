@@ -16,16 +16,7 @@ func _ready():
 func get_leitner_boxes():
 	return userSettings.boxes
 	
-func set_session_number(incoming_number: int):
-	userSettings.sessionNumber = incoming_number
-	save_statistics()
-	
-func update_session_number():
-	if(userSettings.sessionNumber == 9):
-		userSettings.sessionNumber = 0 
-	else: 
-		userSettings.sessionNumber += 1 
-	save_statistics()
+
 
 func get_session_number():
 	return userSettings.sessionNumber

@@ -20,9 +20,9 @@ boot_splash/image="res://assets/white_grid.png"
 
 [autoload]
 
-VocabularyManager="*res://scripts/autoload/VocabularyManager.gd"
-MetaStatisticsManager="*res://scripts/autoload/MetaStatisticsManager.gd"
 LearningSystemsManager="*res://scripts/autoload/LearningSystemsManager.gd"
+MetaStatisticsManager="*res://scripts/autoload/MetaStatisticsManager.gd"
+VocabularyManager="*res://scripts/autoload/VocabularyManager.gd"
 
 [display]
 

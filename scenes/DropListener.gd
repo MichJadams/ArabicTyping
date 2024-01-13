@@ -8,7 +8,7 @@ signal add_words(box_index, words)
 signal word_dropped(box_index, word)
 
 func _ready():
-	var words = LeitnerSystem.get_words_for_box_index(box_index)
+	var words = LearningSystemsManager.get_words_for_box_index(box_index)
 	add_words.emit(box_index, words)
 	
 func _can_drop_data(_pos, data):
