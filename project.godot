@@ -21,7 +21,7 @@ boot_splash/image="res://assets/white_grid.png"
 [autoload]
 
 LearningSystemsManager="*res://scripts/autoload/LearningSystemsManager.gd"
-MetaStatisticsManager="*res://scripts/autoload/MetaStatisticsManager.gd"
+UserSettingsManager="*res://scripts/autoload/UserSettingsManager.gd"
 VocabularyManager="*res://scripts/autoload/VocabularyManager.gd"
 
 [display]

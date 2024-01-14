@@ -21,7 +21,7 @@ func _init():
 	set_learning_session()
 	
 func set_learning_session():
-	match MetaStatisticsManager.get_learning_system():
+	match UserSettingsManager.get_learning_system():
 		LearningSystems.LearningSystemType.LEITNER:
 			selected_learning_system = LeitnerSystem.new()
 		LearningSystems.LearningSystemType.SIMPLEQUEUE:
@@ -33,7 +33,6 @@ func _ready():
 	target_text = target_word.arabic_word
 	correct_map = Constants.initilize_map_array(target_text.length())
 	update_visual()
-	get_audio()
 	progress_bar.generate_completion_pips(words_for_this_session.size())
 
 func get_audio():
@@ -42,6 +41,7 @@ func get_audio():
 func update_visual():
 	target_text_component.display_text(target_text, correct_map)
 	input_text_component.display_text(input_text, correct_map)
+	
 func _input(event):
 	if event is InputEventKey and event.is_pressed():
 		var char_input = OS.get_keycode_string(event.unicode)
@@ -55,6 +55,8 @@ func _input(event):
 			update_visual()
 			
 func process_other_key_press(key_label):
+	if key_label == UserSettingsManager.get_play_audio_key():
+		get_audio()
 	if key_label == Key.KEY_BACKSPACE:
 		input_text = input_text.substr(0, input_text.length() -1)
 	if key_label == Key.KEY_ENTER and current_practice_state == PracticeState.VIEWING_SOURCE_WORD:
@@ -78,12 +80,14 @@ func update_correctness_map():
 		index = index + 1 
 		
 func update_score(recent_index_update):
-	var target_word = words_for_this_session[session_word_index]
+	var target_word: VocabularyWord = words_for_this_session[session_word_index]
 
 	if correct_map.all(func(number): return number == 1):
 		selected_learning_system.promote_word(target_word.id)
 		target_text_component.display_text(target_word.english_word, [])
 		current_practice_state = PracticeState.VIEWING_SOURCE_WORD
+		target_text = target_word.english_word
+		correct_map = Constants.initilize_map_array(target_text.length())
 	# Here is where I can update type count and stuff, but not right now.
 
 func get_next_word():
@@ -96,6 +100,7 @@ func get_next_word():
 		progress_bar.update_progress(session_word_index - SESSION_WORD_INDEX_OFFSET)
 		input_text = ""
 		var target_word = words_for_this_session[session_word_index]
+		target_text = target_word.arabic_word
 		correct_map = Constants.initilize_map_array(target_word.arabic_word.length())
 		current_practice_state = PracticeState.TYPING_TARGET_WORD
 		get_audio()

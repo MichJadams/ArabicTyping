@@ -6,8 +6,8 @@ func _ready():
 	recalculate_display()
 	
 func recalculate_display():
-	var learning_session_number = MetaStatisticsManager.get_session_number() 
-	var todays_boxes_and_selected_card_count = LeitnerSystem.get_todays_box_indexes()
+	var learning_session_number = UserSettingsManager.get_session_number() 
+	var todays_boxes_and_selected_card_count = LeitnerSystem.given_session_get_boxes()
 	var column_numbers = []
 	for box in todays_boxes_and_selected_card_count:
 		var column_number = Constants.box_names_order.find(box)

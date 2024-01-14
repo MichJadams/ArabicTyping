@@ -10,6 +10,6 @@ func increment_session():
 	#for word in words_for_this_session:
 ##		word.upgrade_card()
 		#word.leitnerIndex += 1 
-	#MetaStatisticsManager.update_session_number()
+	#UserSettingsManager.update_session_number()
 	#VocabularyManager.save_vocabulary()
 	

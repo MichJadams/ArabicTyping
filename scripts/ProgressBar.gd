@@ -4,14 +4,14 @@ var root
 var node_width
 var padding = 25
 var pip_childern = []
-var circle_filled = load("res://assets/circle_filled.png")
+var circle_filled = load("res://assets/practice/circle_filled.png")
 
 func _ready():
 	root = get_node("ProgressBar")
 	node_width = get_size().x
 	
 func generate_completion_pips(number_of_pips):
-	var empty_circle_texture = load("res://assets/circle_outline.png")
+	var empty_circle_texture = load("res://assets//practice/circle_outline.png")
 	var progress_unit_width = (node_width/number_of_pips) + padding 
 	for pip_index in number_of_pips:
 		var progress_pip = Sprite2D.new()
