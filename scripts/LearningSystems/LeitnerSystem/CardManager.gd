@@ -21,13 +21,13 @@ func _draw_cards():
 	for display_word in self.cards:
 		add_child(LeitnerBoxItem.new(display_word))
 	
-func _on_control_add_word(signaling_box_index, word):
+func _on_control_add_word(signaling_box_index, display_word: DisplayWord):
 	if box_index == signaling_box_index:
-		word.display_index = self.cards.size() 
-		self.cards.append(word)
+		self.cards.append(display_word)
+		display_word.display_index = self.cards.find(display_word)
 		_draw_cards()
 
-func _on_control_remove_word(signaling_box_index, word: DisplayWord):
+func _on_control_remove_word(signaling_box_index, display_word):
 	if box_index == signaling_box_index:
-		self.cards.remove_at(word.display_index)
+		self.cards.remove_at(display_word.display_index)
 		_draw_cards()

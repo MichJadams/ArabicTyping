@@ -13,10 +13,10 @@ func _ready():
 		add_words.emit(box_index, words)
 	
 func _can_drop_data(_pos, data):
-	if data is VocabularyWord:
+	if data is DisplayWord:
 		return true
 	return false
 	
 func _drop_data(_pos, data):
-	if data is VocabularyWord:
+	if data is DisplayWord:
 		word_dropped.emit(box_index, data)

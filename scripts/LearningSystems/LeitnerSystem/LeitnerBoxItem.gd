@@ -26,6 +26,8 @@ func add_label_container():
 	
 	add_label("Translation:", container)
 	add_label(word.english_word, container)
+	add_label("Display Index:", container)
+	add_label(str(displayWord.display_index), container)
 	
 	add_delete_button(container)
 
