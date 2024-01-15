@@ -23,9 +23,6 @@ func update_play_audio_key(new_key ):
 	userSettings.audio_play_key = new_key
 	save_statistics()
 	 
-func get_session_number():
-	return userSettings.sessionNumber
-
 func save_statistics():
 	ResourceSaver.save(userSettings, metaData_location + metaData_file_name)
 

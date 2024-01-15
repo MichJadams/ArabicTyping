@@ -33,7 +33,7 @@ func add_words(word_list):
 	save_vocabulary()
 	
 func remove_word(word_to_remove: VocabularyWord):
-	var erased = vocab.remove_word(word_to_remove.id)
+	var erased = vocab.remove_word(word_to_remove)
 	if erased:
 		save_vocabulary()
 	else:

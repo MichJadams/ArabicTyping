@@ -1,0 +1,278 @@
+[gd_scene load_steps=9 format=3 uid="uid://cov1nldhigxms"]
+
+[ext_resource type="Texture2D" uid="uid://bnj7oej4tusg2" path="res://assets/white_grid.png" id="1_v4mjg"]
+[ext_resource type="Script" path="res://scripts/LearningSystems/LeitnerSystem/leitner_viewer_control.gd" id="1_xw0jl"]
+[ext_resource type="Theme" uid="uid://b4dk5dnm8igcv" path="res://scripts/autoload/Settings.tres" id="4_reflr"]
+[ext_resource type="Script" path="res://scripts/LearningSystems/LeitnerSystem/CardManager.gd" id="5_uvfxd"]
+[ext_resource type="Script" path="res://scenes/DropListener.gd" id="5_uvsix"]
+[ext_resource type="Script" path="res://scenes/NextSessionDisplay.gd" id="6_7bl8d"]
+[ext_resource type="Script" path="res://scenes/MetaData.gd" id="7_i2pne"]
+[ext_resource type="Script" path="res://scenes/LeitnerSessionNumber.gd" id="8_n57iq"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xw0jl")
+
+[node name="WhiteGrid" type="Sprite2D" parent="."]
+position = Vector2(961.375, 531)
+scale = Vector2(1.00169, 0.994444)
+texture = ExtResource("1_v4mjg")
+
+[node name="ToSettings" type="Button" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = -2.0
+offset_right = 106.0
+offset_bottom = 39.0
+text = "Back"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 326.0
+offset_right = 1894.0
+offset_bottom = 1026.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="LeitnerBox" type="Panel" parent="ScrollContainer/HBoxContainer"]
+process_priority = 3
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_reflr")
+script = ExtResource("5_uvsix")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/HBoxContainer/LeitnerBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/HBoxContainer/LeitnerBox/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("5_uvfxd")
+box_index = null
+
+[node name="LeitnerBox2" type="Panel" parent="ScrollContainer/HBoxContainer"]
+process_priority = 3
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_reflr")
+script = ExtResource("5_uvsix")
+box_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/HBoxContainer/LeitnerBox2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/HBoxContainer/LeitnerBox2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("5_uvfxd")
+box_index = 1
+
+[node name="LeitnerBox3" type="Panel" parent="ScrollContainer/HBoxContainer"]
+process_priority = 3
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_reflr")
+script = ExtResource("5_uvsix")
+box_index = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/HBoxContainer/LeitnerBox3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/HBoxContainer/LeitnerBox3/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("5_uvfxd")
+box_index = 2
+
+[node name="LeitnerBox4" type="Panel" parent="ScrollContainer/HBoxContainer"]
+process_priority = 3
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_reflr")
+script = ExtResource("5_uvsix")
+box_index = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/HBoxContainer/LeitnerBox4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/HBoxContainer/LeitnerBox4/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("5_uvfxd")
+box_index = 3
+
+[node name="LeitnerBox5" type="Panel" parent="ScrollContainer/HBoxContainer"]
+process_priority = 3
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_reflr")
+script = ExtResource("5_uvsix")
+box_index = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/HBoxContainer/LeitnerBox5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/HBoxContainer/LeitnerBox5/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("5_uvfxd")
+box_index = 4
+
+[node name="LeitnerBox6" type="Panel" parent="ScrollContainer/HBoxContainer"]
+process_priority = 3
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_reflr")
+script = ExtResource("5_uvsix")
+box_index = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/HBoxContainer/LeitnerBox6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/HBoxContainer/LeitnerBox6/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("5_uvfxd")
+box_index = 5
+
+[node name="LeitnerBox7" type="Panel" parent="ScrollContainer/HBoxContainer"]
+process_priority = 3
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_reflr")
+script = ExtResource("5_uvsix")
+box_index = 6
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/HBoxContainer/LeitnerBox7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/HBoxContainer/LeitnerBox7/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("5_uvfxd")
+box_index = 6
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 32.0
+offset_right = 1748.0
+offset_bottom = 275.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("6_7bl8d")
+
+[node name="MetaData" type="Label" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 309.0
+offset_right = 272.0
+offset_bottom = 549.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+script = ExtResource("7_i2pne")
+
+[node name="LeitnerSessionNumber" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 564.0
+offset_right = 158.0
+offset_bottom = 597.0
+max_value = 9.0
+alignment = 1
+script = ExtResource("8_n57iq")
+
+[connection signal="add_word" from="." to="ScrollContainer/HBoxContainer/LeitnerBox/ScrollContainer/GridContainer" method="_on_control_add_word"]
+[connection signal="add_word" from="." to="ScrollContainer/HBoxContainer/LeitnerBox2/ScrollContainer/GridContainer" method="_on_control_add_word"]
+[connection signal="add_word" from="." to="ScrollContainer/HBoxContainer/LeitnerBox3/ScrollContainer/GridContainer" method="_on_control_add_word"]
+[connection signal="add_word" from="." to="ScrollContainer/HBoxContainer/LeitnerBox4/ScrollContainer/GridContainer" method="_on_control_add_word"]
+[connection signal="add_word" from="." to="ScrollContainer/HBoxContainer/LeitnerBox5/ScrollContainer/GridContainer" method="_on_control_add_word"]
+[connection signal="add_word" from="." to="ScrollContainer/HBoxContainer/LeitnerBox6/ScrollContainer/GridContainer" method="_on_control_add_word"]
+[connection signal="add_word" from="." to="ScrollContainer/HBoxContainer/LeitnerBox7/ScrollContainer/GridContainer" method="_on_control_add_word"]
+[connection signal="remove_word" from="." to="ScrollContainer/HBoxContainer/LeitnerBox/ScrollContainer/GridContainer" method="_on_control_remove_word"]
+[connection signal="remove_word" from="." to="ScrollContainer/HBoxContainer/LeitnerBox2/ScrollContainer/GridContainer" method="_on_control_remove_word"]
+[connection signal="remove_word" from="." to="ScrollContainer/HBoxContainer/LeitnerBox3/ScrollContainer/GridContainer" method="_on_control_remove_word"]
+[connection signal="remove_word" from="." to="ScrollContainer/HBoxContainer/LeitnerBox4/ScrollContainer/GridContainer" method="_on_control_remove_word"]
+[connection signal="remove_word" from="." to="ScrollContainer/HBoxContainer/LeitnerBox5/ScrollContainer/GridContainer" method="_on_control_remove_word"]
+[connection signal="remove_word" from="." to="ScrollContainer/HBoxContainer/LeitnerBox6/ScrollContainer/GridContainer" method="_on_control_remove_word"]
+[connection signal="remove_word" from="." to="ScrollContainer/HBoxContainer/LeitnerBox7/ScrollContainer/GridContainer" method="_on_control_remove_word"]
+[connection signal="pressed" from="ToSettings" to="." method="_on_to_settings_pressed"]
+[connection signal="value_changed" from="LeitnerSessionNumber" to="ScrollContainer2/HBoxContainer" method="_on_leitner_session_number_value_changed"]
+[connection signal="value_changed" from="LeitnerSessionNumber" to="MetaData" method="_on_leitner_session_number_value_changed"]
+[connection signal="value_changed" from="LeitnerSessionNumber" to="LeitnerSessionNumber" method="_on_value_changed"]

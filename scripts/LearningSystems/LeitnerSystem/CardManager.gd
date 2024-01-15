@@ -1,28 +1,25 @@
 extends GridContainer
 
 @export var box_index: int
-var cards = []
+var cards: Array[DisplayWord] = []
 
 func _ready():
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
-func _on_leitner_box_add_words(signaling_box_index, words):
+func _on_leitner_box_add_words(signaling_box_index, word_ids):
 	if box_index == signaling_box_index:
-		for word_index in words.size():
-			var word = words[word_index]
-			word.display_index = word_index
-			self.cards.append(word)
+		for word_index in word_ids.size():
+			var display_word = DisplayWord.new(word_ids[word_index], word_index)
+			self.cards.append(display_word)
 		_draw_cards()
 			
 func _draw_cards():
-	var children = self.get_children()
-	for c in children:
+	for c in self.get_children():
 		self.remove_child(c)
 		c.queue_free()
 		
-	for card_index in self.cards.size():
-		self.cards[card_index].display_index = card_index
-		add_child(LeitnerBoxItem.new(self.cards[card_index], card_index))
+	for display_word in self.cards:
+		add_child(LeitnerBoxItem.new(display_word))
 	
 func _on_control_add_word(signaling_box_index, word):
 	if box_index == signaling_box_index:
@@ -30,7 +27,7 @@ func _on_control_add_word(signaling_box_index, word):
 		self.cards.append(word)
 		_draw_cards()
 
-func _on_control_remove_word(signaling_box_index, word):
+func _on_control_remove_word(signaling_box_index, word: DisplayWord):
 	if box_index == signaling_box_index:
 		self.cards.remove_at(word.display_index)
 		_draw_cards()

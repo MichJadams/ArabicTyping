@@ -19,6 +19,15 @@ func save_learning_system_data():
 func get_leitner_session_number():
 	return learningSystemsData.leitner_session_number
 
+func set_leitner_session_number(target_session_number):
+	if target_session_number < 0: 
+		return 
+	if target_session_number > 9:
+		learningSystemsData.leitner_session_number = 1 
+	else:
+		learningSystemsData.leitner_session_number += target_session_number
+	save_learning_system_data()
+	
 func increment_leitner_session_number():
 	# in the leitner algorithm there are only 9 boxes 10 boxes. Uncategoried (index 0) and 9 others 
 	if learningSystemsData.leitner_session_number == 9:
@@ -27,7 +36,7 @@ func increment_leitner_session_number():
 		learningSystemsData.leitner_session_number += 1
 	save_learning_system_data()
 
-func promote_leitner_word_to_next_box(word_id):
+func promote_leitner_word_to_next_box(word_id, next_box_name = null):
 	var current_box = ""
 	var current_box_index = -1 
 	for box_name in learningSystemsData.leitner_box_number_to_words.keys():
@@ -39,7 +48,11 @@ func promote_leitner_word_to_next_box(word_id):
 			current_box = box_name 
 			current_box_index = word_index 
 			break
-	var next_box_name = learningSystemsData.get_next_box_name(current_box)
+	if next_box_name == null:
+		next_box_name = learningSystemsData.get_next_box_name(current_box)
+	else: 
+		next_box_name = learningSystemsData.get_box_name_from_index(next_box_name)
+		
 	learningSystemsData.leitner_box_number_to_words[current_box].remove_at(current_box_index)
 	learningSystemsData.leitner_box_number_to_words[next_box_name].append(word_id)
 	save_learning_system_data()
@@ -47,6 +60,18 @@ func promote_leitner_word_to_next_box(word_id):
 func get_all_leitner_box_names():
 	return learningSystemsData.leitner_box_names_order
 
+func get_box_name_from_index(box_index):
+	return  learningSystemsData.leitner_box_names_order.find(box_index)
+	
+func get_words_from_index(box_index):
+	if box_index == 0:
+		return learningSystemsData.leitner_box_number_to_words["uncategorized"]
+	if box_index < 9 and box_index > 0:
+		var box_name = learningSystemsData.leitner_box_names_order[box_index]
+		return learningSystemsData.leitner_box_number_to_words[box_name]
+	else:
+		return false 
+	
 func given_box_names_get_slice_of_words(box_names, slice_size):
 	var selection_of_words = []
 	for box_name in box_names:
@@ -65,5 +90,13 @@ func save_words_to_uncategorized_box(word_ids: Array[String]):
 func get_uncategorized_word_ids():
 	return learningSystemsData.leitner_box_number_to_words["uncategorized"]
 	
-func get_words_for_box_index(box_index):
-	pass
+func remove_word_from_leitner_system(word_id):
+	for box_name in learningSystemsData.leitner_box_number_to_words.keys():
+		var words = learningSystemsData.leitner_box_number_to_words[box_name]
+		var word_index = words.find(word_id)
+		if word_index != -1: 
+			continue 
+		else:
+			learningSystemsData.leitner_box_number_to_words[box_name].remove_at(word_index)
+			return true 
+	return false 

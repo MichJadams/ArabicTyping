@@ -2,12 +2,12 @@ extends Panel
 
 class_name LeitnerBoxItem
 var is_being_dragged = false 
-var card_index: int
+var displayWord: DisplayWord
 var word: VocabularyWord
 
-func _init(incoming_word: VocabularyWord, index):
-	self.card_index = index
-	self.word = incoming_word
+func _init(incoming_word: DisplayWord):
+	self.displayWord = incoming_word
+	self.word = VocabularyManager.get_word_by_id(incoming_word.word_id)
 	self.theme = load("res://scripts/autoload/sandy.tres")
 	
 	custom_minimum_size.y = 275
@@ -17,7 +17,7 @@ func _init(incoming_word: VocabularyWord, index):
 	
 func _get_drag_data(_at_postion):
 	set_drag_preview(get_drag_preview())
-	return word
+	return displayWord
 
 func add_label_container():
 	var container = add_container()
@@ -27,13 +27,7 @@ func add_label_container():
 	add_label("Translation:", container)
 	add_label(word.english_word, container)
 	
-	add_label("Typos:", container)
-	add_label(str(word.total_typos), container)
-	
 	add_delete_button(container)
-
-	add_label("Leitner Index:", container)
-	add_label(str(word.leitnerIndex), container)
 
 func add_label(text: String, container: GridContainer):
 	var label = Label.new()
@@ -52,7 +46,7 @@ func add_delete_button(container: GridContainer):
 	container.add_child(button)
 	
 func remove_word():
-	VocabularyManager.remove_word(word)
+	LearningSystemsManager.remove_word_from_leitner_system(displayWord.word_id)
 	
 func add_container():
 	var margins = MarginContainer.new()

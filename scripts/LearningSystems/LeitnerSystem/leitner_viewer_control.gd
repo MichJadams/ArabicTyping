@@ -1,5 +1,7 @@
 extends Control
 
+@export var leitnerSystem: LeitnerSystem = LeitnerSystem.new()
+ 
 signal remove_word(box_index, word) 
 signal add_word(box_index, word)
 
@@ -8,7 +10,5 @@ func _on_to_settings_pressed():
 
 func _on_leitner_box_word_dropped(target_box_index, word:VocabularyWord):
 	remove_word.emit(word.leitnerIndex, word)
-	word.set_leitner_index(target_box_index)
 	add_word.emit(target_box_index, word)
-	var test = VocabularyManager.get_all_words()
-	VocabularyManager.save_vocabulary()
+	LearningSystemsManager.promote_leitner_word_to_next_box(word, target_box_index)
