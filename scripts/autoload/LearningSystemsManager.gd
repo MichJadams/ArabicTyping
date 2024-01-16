@@ -100,9 +100,13 @@ func remove_word_from_leitner_system(word_id):
 	for box_name in learningSystemsData.leitner_box_number_to_words.keys():
 		var words = learningSystemsData.leitner_box_number_to_words[box_name]
 		var word_index = words.find(word_id)
-		if word_index != -1: 
+		if word_index == -1: 
 			continue 
 		else:
+			var before = learningSystemsData.leitner_box_number_to_words[box_name][word_index]
+			
 			learningSystemsData.leitner_box_number_to_words[box_name].remove_at(word_index)
+			var after = learningSystemsData.leitner_box_number_to_words[box_name][word_index]
+			save_learning_system_data()
 			return true 
 	return false 
