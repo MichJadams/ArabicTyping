@@ -19,7 +19,8 @@ enum LearningSystemType {
 	'8-0-3-7':[], 
 	'9-1-4-8':[]
 }
-
+@export var simple_queue = []
+@export var simple_queue_max_length = 10
 func get_next_box_name(current_box_name):
 	var current_box_index = leitner_box_names_order.find(current_box_name)
 	current_box_index += 1

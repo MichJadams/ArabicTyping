@@ -110,3 +110,23 @@ func remove_word_from_leitner_system(word_id):
 			save_learning_system_data()
 			return true 
 	return false 
+
+func get_simple_queue_words():
+	return learningSystemsData.simple_queue
+
+func remove_word_from_simple_queue(word_id):
+	var word_index = learningSystemsData.simple_queue.find(word_id) 
+	if word_index >= 0:
+		learningSystemsData.simple_queue.remove_at(word_index)
+		save_learning_system_data()
+		return true 
+	else:
+		return false 
+		
+func add_word_to_simple_queue(word_id):
+	if learningSystemsData.simple_queue.size() <= learningSystemsData.simple_queue_max_length:
+		learningSystemsData.simple_queue.append(word_id)
+		save_learning_system_data()
+		return true 
+	else:
+		return false 

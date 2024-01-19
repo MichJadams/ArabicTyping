@@ -17,16 +17,16 @@ grow_vertical = 2
 script = ExtResource("1_emop5")
 
 [node name="WhiteGrid" type="Sprite2D" parent="."]
-position = Vector2(962.25, 543.5)
+position = Vector2(803, 461)
 scale = Vector2(0.996614, 0.999074)
 texture = ExtResource("1_eqom0")
 
 [node name="UploadFromFile" type="Button" parent="."]
 layout_mode = 0
-offset_left = 351.0
-offset_top = 563.0
-offset_right = 601.0
-offset_bottom = 613.0
+offset_left = 1263.0
+offset_top = 164.0
+offset_right = 1513.0
+offset_bottom = 214.0
 text = "Upload From File"
 script = ExtResource("1_jtuo7")
 
@@ -49,27 +49,41 @@ script = ExtResource("3_igrqs")
 
 [node name="ToLeitnerSystem" type="Button" parent="."]
 layout_mode = 0
-offset_left = 354.0
-offset_top = 414.0
-offset_right = 604.0
-offset_bottom = 464.0
+offset_left = 395.0
+offset_top = 475.0
+offset_right = 645.0
+offset_bottom = 525.0
 text = "Leitner System"
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 138.0
-offset_top = 262.0
-offset_right = 408.0
-offset_bottom = 422.0
+offset_left = 74.0
+offset_top = 224.0
+offset_right = 353.0
+offset_bottom = 342.0
 script = ExtResource("5_kiy5b")
 
 [node name="UseLeitnerSystem" type="CheckBox" parent="GridContainer" groups=["LearningSystemSelection"]]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
 button_group = ExtResource("6_anvd2")
+text = "Leitner System"
 
 [node name="UseSimpleQueue" type="CheckBox" parent="GridContainer" groups=["LearningSystemSelection"]]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
 button_group = ExtResource("6_anvd2")
+text = "Simple Queue"
+
+[node name="ToSimpleQueue" type="Button" parent="."]
+layout_mode = 0
+offset_left = 402.0
+offset_top = 379.0
+offset_right = 651.0
+offset_bottom = 426.0
+text = "Simple Queue"
 
 [connection signal="pressed" from="UploadFromFile" to="UploadFromFile" method="_on_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
@@ -78,3 +92,4 @@ button_group = ExtResource("6_anvd2")
 [connection signal="pressed" from="ToLeitnerSystem" to="." method="_on_to_leitner_system_pressed"]
 [connection signal="toggled" from="GridContainer/UseLeitnerSystem" to="GridContainer" method="_on_use_leitner_system_toggled"]
 [connection signal="toggled" from="GridContainer/UseSimpleQueue" to="GridContainer" method="_on_use_simple_queue_toggled"]
+[connection signal="pressed" from="ToSimpleQueue" to="." method="_on_to_simple_queue_pressed"]

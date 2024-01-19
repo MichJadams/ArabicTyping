@@ -3,13 +3,17 @@ extends LearningSystem
 class_name SimpleQueueSystem 
 
 func get_words_for_this_session():
-	return VocabularyManager.get_all_words().slice(0,10)
+	var word_ids_for_this_session = LearningSystemsManager.get_simple_queue_words()
+	var words_for_this_session = []
+	for word_id in word_ids_for_this_session:
+		words_for_this_session.append(VocabularyManager.get_word_by_id(word_id))
+	return words_for_this_session
+	
+func word_score(word_id):
+	pass  
 
 func increment_session():
 	pass
-	#for word in words_for_this_session:
-##		word.upgrade_card()
-		#word.leitnerIndex += 1 
-	#UserSettingsManager.update_session_number()
-	#VocabularyManager.save_vocabulary()
-	
+
+func promote_word(word_id):
+	pass

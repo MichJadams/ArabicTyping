@@ -30,6 +30,7 @@ func add_words(word_list):
 		var added = vocab.add_word(word)
 		if added:
 			LearningSystemsManager.save_word_to_uncategorized_box(word.id)
+			LearningSystemsManager.add_word_to_simple_queue(word.id)
 	save_vocabulary()
 	
 func remove_word(word_to_remove: VocabularyWord):
