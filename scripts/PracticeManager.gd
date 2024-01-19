@@ -104,6 +104,5 @@ func get_next_word():
 		correct_map = Constants.initilize_map_array(target_word.arabic_word.length())
 		current_practice_state = PracticeState.TYPING_TARGET_WORD
 	
-	
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

@@ -2,7 +2,7 @@ extends Node
 
 class_name LearningSystem
 
-func get_words_for_this_session():
+static func get_words_for_this_session():
 	pass
 	
 func word_score(word_id):

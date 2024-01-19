@@ -8,11 +8,11 @@ func increment_session():
 func promote_word(word_id: String):
 	LearningSystemsManager.promote_leitner_word_to_next_box(word_id)
 	
-func get_todays_box_names():
+static func get_todays_box_names():
 	var session_number = LearningSystemsManager.get_leitner_session_number()
 	return given_session_get_boxes(session_number)
 
-func given_session_get_boxes(session_number: int):
+static func given_session_get_boxes(session_number: int):
 	var session_string = str(session_number)
 	var box_names = []
 	var all_box_names = LearningSystemsManager.get_all_leitner_box_names()
@@ -24,9 +24,9 @@ func given_session_get_boxes(session_number: int):
 func load_uncategorized_boxes():
 	LearningSystemsManager.load_uncategorized_leitner_boxes()
 	
-func get_words_for_this_session():
+static func get_words_for_this_session():
 	var words_for_this_session = []
-	var todays_boxes = get_todays_box_names()
+	var todays_boxes = LeitnerSystem.get_todays_box_names()
 	var word_ids_for_this_session = LearningSystemsManager.given_box_names_get_slice_of_words(todays_boxes, 2)
 	
 	if word_ids_for_this_session.size() <= 10:

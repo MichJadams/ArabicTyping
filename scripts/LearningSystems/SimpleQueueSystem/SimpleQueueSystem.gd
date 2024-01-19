@@ -2,7 +2,7 @@ extends LearningSystem
 
 class_name SimpleQueueSystem 
 
-func get_words_for_this_session():
+static func get_words_for_this_session():
 	var word_ids_for_this_session = LearningSystemsManager.get_simple_queue_words()
 	var words_for_this_session = []
 	for word_id in word_ids_for_this_session:
