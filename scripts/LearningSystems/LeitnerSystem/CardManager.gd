@@ -19,8 +19,11 @@ func _draw_cards():
 		c.queue_free()
 		
 	for display_word in self.cards:
-		add_child(LeitnerBoxItem.new(display_word, _draw_cards))
-	
+		add_child(LeitnerBoxItem.new(display_word, remove_word))
+		
+func remove_word(word_id):
+	if LearningSystemsManager.remove_word_from_leitner_system(word_id):
+		_draw_cards()
 func _on_control_add_word(signaling_box_index, display_word: DisplayWord):
 	if box_index == signaling_box_index:
 		self.cards.append(display_word)

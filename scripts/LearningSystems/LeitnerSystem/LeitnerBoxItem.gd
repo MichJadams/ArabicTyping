@@ -4,13 +4,13 @@ class_name LeitnerBoxItem
 var is_being_dragged = false 
 var displayWord: DisplayWord
 var word: VocabularyWord
-var redraw_cards: Callable
+var remove_word: Callable
 
-func _init(incoming_word: DisplayWord, draw_cards = null):
+func _init(incoming_word: DisplayWord, remove_word = null):
 	self.displayWord = incoming_word
 	self.word = VocabularyManager.get_word_by_id(incoming_word.word_id)
 	self.theme = load("res://scripts/autoload/sandy.tres")
-	self.redraw_cards = draw_cards
+	self.remove_word = remove_word
 	custom_minimum_size.y = 275
 	size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	mouse_filter = Control.MOUSE_FILTER_PASS
@@ -45,13 +45,9 @@ func add_delete_button(container: GridContainer):
 	var button = Button.new()
 	button.text = "X"
 	button.mouse_filter = Control.MOUSE_FILTER_PASS
-	button.button_down.connect(remove_word)
+	button.button_down.connect(func(): remove_word.call(word.id))
 	container.add_child(button)
-	
-func remove_word():
-	if LearningSystemsManager.remove_word_from_leitner_system(displayWord.word_id):
-		self.redraw_cards.call()
-	
+
 func add_container():
 	var margins = MarginContainer.new()
 	margins.add_theme_constant_override("margin_top", 20)
