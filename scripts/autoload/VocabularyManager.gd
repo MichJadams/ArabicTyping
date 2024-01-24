@@ -26,12 +26,18 @@ func save_vocabulary():
 	ResourceSaver.save(vocab, vocabulary_location + vocabulary_file_name)
 	
 func add_words(word_list):
+	var duplicates = 0 
+	var newly_added = 0 
 	for word: VocabularyWord in word_list:
 		var added = vocab.add_word(word)
 		if added:
+			newly_added += 1 
 			LearningSystemsManager.save_word_to_uncategorized_box(word.id)
 			LearningSystemsManager.add_word_to_simple_queue(word.id)
+		else: 
+			duplicates += 1 
 	save_vocabulary()
+	return "added %s new words. Found %s duplicatest" % [newly_added, duplicates]
 	
 func remove_word(word_to_remove: VocabularyWord):
 	var erased = vocab.remove_word(word_to_remove)
