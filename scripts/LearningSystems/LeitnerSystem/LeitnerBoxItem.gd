@@ -11,11 +11,20 @@ func _init(incoming_word: DisplayWord, remove_word = null):
 	self.word = VocabularyManager.get_word_by_id(incoming_word.word_id)
 	self.theme = load("res://scripts/autoload/sandy.tres")
 	self.remove_word = remove_word
-	custom_minimum_size.y = 275
+	custom_minimum_size.y = 100
+	custom_minimum_size.x = 400
+
 	size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	mouse_filter = Control.MOUSE_FILTER_PASS
+	add_backgrounk()
 	add_label_container()
 	
+func add_backgrounk():
+	var back = TextureRect.new()
+	back.texture = preload("res://assets/card/arabestVocabCard_01_cut.png")
+	back.size = Vector2(400, 100)
+	add_child(back)
+	pass 
 func _get_drag_data(_at_postion):
 	set_drag_preview(get_drag_preview())
 	return displayWord

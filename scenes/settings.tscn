@@ -17,8 +17,8 @@ grow_vertical = 2
 script = ExtResource("1_emop5")
 
 [node name="WhiteGrid" type="Sprite2D" parent="."]
-position = Vector2(803, 461)
-scale = Vector2(0.996614, 0.999074)
+position = Vector2(960, 565)
+scale = Vector2(1.04779, 1.06991)
 texture = ExtResource("1_eqom0")
 
 [node name="UploadFromFile" type="Button" parent="."]
@@ -40,6 +40,7 @@ text = "Back"
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 723.0
 offset_top = 406.0
 offset_right = 1107.0
