@@ -1,6 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://b4dk5dnm8igcv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5y8t"]
+draw_center = false
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 

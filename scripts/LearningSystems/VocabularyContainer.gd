@@ -17,5 +17,4 @@ func _draw_cards():
 	for display_index in words.size():
 		var display_word = DisplayWord.new(words[display_index].id, display_index)
 		var card = LeitnerBoxItem.new(display_word, remove_word)
-		card.custom_minimum_size.x = 300
 		add_child(card)

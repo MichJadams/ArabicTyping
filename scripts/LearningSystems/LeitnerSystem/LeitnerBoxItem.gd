@@ -9,9 +9,9 @@ var remove_word: Callable
 func _init(incoming_word: DisplayWord, remove_word = null):
 	self.displayWord = incoming_word
 	self.word = VocabularyManager.get_word_by_id(incoming_word.word_id)
-	self.theme = load("res://scripts/autoload/sandy.tres")
+	self.theme = load("res://scripts/autoload/Settings.tres")
 	self.remove_word = remove_word
-	custom_minimum_size.y = 100
+	custom_minimum_size.y = 600
 	custom_minimum_size.x = 400
 
 	size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -22,32 +22,35 @@ func _init(incoming_word: DisplayWord, remove_word = null):
 func add_backgrounk():
 	var back = TextureRect.new()
 	back.texture = preload("res://assets/card/arabestVocabCard_01_cut.png")
-	back.size = Vector2(400, 100)
+	back.size = Vector2(100, 600)
 	add_child(back)
-	pass 
+	 
 func _get_drag_data(_at_postion):
 	set_drag_preview(get_drag_preview())
 	return displayWord
 
 func add_label_container():
 	var container = add_container()
-	add_label("Arabic:", container)
+	add_delete_button(container)
+	#add_label("Arabic:", container)
 	add_label(word.arabic_word, container)
 	
-	add_label("Translation:", container)
+	#add_label("Translation:", container)
 	add_label(word.english_word, container)
-	add_label("Display Index:", container)
-	add_label(str(displayWord.display_index), container)
+	#add_label("Display Index:", container)
+	#add_label(str(displayWord.display_index), container)
 	
-	add_delete_button(container)
 
 func add_label(text: String, container: GridContainer):
 	var label = Label.new()
 	label.text = text
 	label.add_theme_color_override("font_color",Color.BLACK)
-	label.add_theme_font_size_override("font_size",20)
+	label.add_theme_font_size_override("font_size",50)
 	label.mouse_filter = Control.MOUSE_FILTER_PASS
-
+	label.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	container.add_child(label)
 	
 func add_delete_button(container: GridContainer):
@@ -55,6 +58,7 @@ func add_delete_button(container: GridContainer):
 	button.text = "X"
 	button.mouse_filter = Control.MOUSE_FILTER_PASS
 	button.button_down.connect(func(): remove_word.call(word.id))
+	button.size_flags_horizontal =Control.SIZE_SHRINK_END
 	container.add_child(button)
 
 func add_container():
@@ -70,14 +74,15 @@ func add_container():
 	var container = GridContainer.new()
 	container.set_process_unhandled_input(false)
 	container.mouse_filter = Control.MOUSE_FILTER_PASS
-		
+	#container.custom_constants["vgap"] = 4
+	container.custom_minimum_size = Vector2(400, 500)
 	margins.add_child(container)
 	
 	container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	container.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	container.layout_mode = 1
 	container.anchors_preset = PRESET_CENTER
-	container.columns = 2
+	container.columns = 1
 	
 	return container
 
