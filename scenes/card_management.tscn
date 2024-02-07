@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwjpf2l3l0r0q"]
+
+[ext_resource type="Script" path="res://scenes/card_management.gd" id="1_8qqt0"]
+[ext_resource type="Texture2D" uid="uid://bnj7oej4tusg2" path="res://assets/white_grid.png" id="1_730rh"]
+[ext_resource type="Script" path="res://scripts/UploadFromFile.gd" id="2_vse8b"]
+[ext_resource type="Script" path="res://scripts/UploadFileDialog.gd" id="3_sntbp"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8qqt0")
+
+[node name="WhiteGrid" type="Sprite2D" parent="."]
+position = Vector2(960, 565)
+scale = Vector2(1.04779, 1.06991)
+texture = ExtResource("1_730rh")
+
+[node name="UploadFromFile" type="Button" parent="."]
+offset_left = 1263.0
+offset_top = 164.0
+offset_right = 1513.0
+offset_bottom = 214.0
+text = "Upload From File"
+script = ExtResource("2_vse8b")
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+initial_position = 2
+size = Vector2i(400, 300)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+script = ExtResource("3_sntbp")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = 723.0
+offset_top = 406.0
+offset_right = 1107.0
+offset_bottom = 649.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -66.0
+offset_right = 20.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "This is a test "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="close_btn" type="Button" parent="Panel"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Close"
+
+[node name="Back" type="Button" parent="."]
+offset_left = 65.0
+offset_top = -4.0
+offset_right = 172.0
+offset_bottom = 47.0
+text = "Back"
+
+[connection signal="pressed" from="UploadFromFile" to="UploadFromFile" method="_on_pressed"]
+[connection signal="file_selected" from="FileDialog" to="FileDialog" method="_on_file_selected"]
+[connection signal="pressed" from="Panel/close_btn" to="UploadFromFile" method="_on_close_btn_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

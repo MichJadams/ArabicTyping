@@ -11,8 +11,8 @@ func _init(incoming_word: DisplayWord, remove_word = null):
 	self.word = VocabularyManager.get_word_by_id(incoming_word.word_id)
 	self.theme = load("res://scripts/autoload/Settings.tres")
 	self.remove_word = remove_word
-	custom_minimum_size.y = 600
-	custom_minimum_size.x = 400
+	custom_minimum_size.x = 300
+	custom_minimum_size.y = 400
 
 	size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	mouse_filter = Control.MOUSE_FILTER_PASS
@@ -22,7 +22,9 @@ func _init(incoming_word: DisplayWord, remove_word = null):
 func add_backgrounk():
 	var back = TextureRect.new()
 	back.texture = preload("res://assets/card/arabestVocabCard_01_cut.png")
-	back.size = Vector2(100, 600)
+	back.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	back.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
+	back.size = Vector2(300, 400)
 	add_child(back)
 	 
 func _get_drag_data(_at_postion):
@@ -74,8 +76,7 @@ func add_container():
 	var container = GridContainer.new()
 	container.set_process_unhandled_input(false)
 	container.mouse_filter = Control.MOUSE_FILTER_PASS
-	#container.custom_constants["vgap"] = 4
-	container.custom_minimum_size = Vector2(400, 500)
+	container.custom_minimum_size = Vector2(250, 300)
 	margins.add_child(container)
 	
 	container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
