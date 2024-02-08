@@ -55,6 +55,8 @@ func _input(event):
 			update_visual()
 			
 func process_other_key_press(key_label):
+	if key_label == Key.KEY_SPACE:
+		process_input_char(" ")
 	if key_label == UserSettingsManager.get_play_audio_key():
 		get_audio()
 	if key_label == Key.KEY_BACKSPACE:

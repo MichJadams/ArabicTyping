@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/TargetTextControl.gd" id="1_m5tyi"]
 [ext_resource type="Script" path="res://scripts/PracticeManager.gd" id="1_r3dn7"]
 [ext_resource type="Texture2D" uid="uid://bnj7oej4tusg2" path="res://assets/white_grid.png" id="2_y60vs"]
-[ext_resource type="Theme" path="res://scripts/autoload/sandy.tres" id="3_xwx3d"]
+[ext_resource type="Theme" uid="uid://mhsdqp7ljmrw" path="res://scripts/autoload/sandy.tres" id="3_xwx3d"]
 [ext_resource type="Script" path="res://scripts/ProgressBar.gd" id="5_40twx"]
 [ext_resource type="Script" path="res://scripts/fetchArabicPronunciation.gd" id="6_kx75t"]
 

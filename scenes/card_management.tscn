@@ -91,25 +91,28 @@ script = ExtResource("5_ujnyf")
 layout_mode = 0
 offset_left = 47.0
 offset_top = 36.0
-offset_right = 352.0
-offset_bottom = 170.0
+offset_right = 608.0
+offset_bottom = 186.0
+theme_override_font_sizes/font_size = 40
 
 [node name="source_input" type="LineEdit" parent="add_card_container"]
 layout_mode = 0
 offset_left = 54.0
 offset_top = 207.0
-offset_right = 343.0
-offset_bottom = 335.0
+offset_right = 590.0
+offset_bottom = 373.0
+theme_override_font_sizes/font_size = 40
 
 [node name="save_word" type="Button" parent="add_card_container"]
 layout_mode = 0
-offset_left = 496.0
-offset_top = 141.0
-offset_right = 577.0
-offset_bottom = 170.0
+offset_left = 626.0
+offset_top = 278.0
+offset_right = 708.0
+offset_bottom = 309.0
 text = "add word"
 
 [node name="VocabularyScroll" type="ScrollContainer" parent="."]
+layout_mode = 0
 offset_left = 200.0
 offset_top = 500.0
 offset_right = 1700.0

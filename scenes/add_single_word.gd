@@ -9,3 +9,4 @@ func _on_save_word_pressed():
 	VocabularyManager.add_words([word_to_add])
 	target_input.clear()
 	source_input.clear()
+	target_input.grab_focus()
