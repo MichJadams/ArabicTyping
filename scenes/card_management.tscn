@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwjpf2l3l0r0q"]
+[gd_scene load_steps=7 format=3 uid="uid://cwjpf2l3l0r0q"]
 
 [ext_resource type="Script" path="res://scenes/card_management.gd" id="1_8qqt0"]
 [ext_resource type="Texture2D" uid="uid://bnj7oej4tusg2" path="res://assets/white_grid.png" id="1_730rh"]
 [ext_resource type="Script" path="res://scripts/UploadFromFile.gd" id="2_vse8b"]
 [ext_resource type="Script" path="res://scripts/UploadFileDialog.gd" id="3_sntbp"]
+[ext_resource type="Script" path="res://scenes/add_single_word.gd" id="5_ujnyf"]
+[ext_resource type="Script" path="res://scripts/LearningSystems/VocabularyContainer.gd" id="6_ka74m"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -19,7 +21,16 @@ position = Vector2(960, 565)
 scale = Vector2(1.04779, 1.06991)
 texture = ExtResource("1_730rh")
 
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 65.0
+offset_top = -4.0
+offset_right = 172.0
+offset_bottom = 47.0
+text = "Back"
+
 [node name="UploadFromFile" type="Button" parent="."]
+layout_mode = 0
 offset_left = 1263.0
 offset_top = 164.0
 offset_right = 1513.0
@@ -38,6 +49,7 @@ script = ExtResource("3_sntbp")
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 723.0
 offset_top = 406.0
 offset_right = 1107.0
@@ -67,14 +79,50 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "Close"
 
-[node name="Back" type="Button" parent="."]
-offset_left = 65.0
-offset_top = -4.0
-offset_right = 172.0
-offset_bottom = 47.0
-text = "Back"
+[node name="add_card_container" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 97.0
+offset_right = 973.0
+offset_bottom = 489.0
+script = ExtResource("5_ujnyf")
 
+[node name="target_input" type="LineEdit" parent="add_card_container"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 36.0
+offset_right = 352.0
+offset_bottom = 170.0
+
+[node name="source_input" type="LineEdit" parent="add_card_container"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 207.0
+offset_right = 343.0
+offset_bottom = 335.0
+
+[node name="save_word" type="Button" parent="add_card_container"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 141.0
+offset_right = 577.0
+offset_bottom = 170.0
+text = "add word"
+
+[node name="VocabularyScroll" type="ScrollContainer" parent="."]
+offset_left = 200.0
+offset_top = 500.0
+offset_right = 1700.0
+offset_bottom = 1000.0
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VocabularyScroll"]
+layout_mode = 2
+script = ExtResource("6_ka74m")
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="UploadFromFile" to="UploadFromFile" method="_on_pressed"]
 [connection signal="file_selected" from="FileDialog" to="FileDialog" method="_on_file_selected"]
 [connection signal="pressed" from="Panel/close_btn" to="UploadFromFile" method="_on_close_btn_pressed"]
-[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="add_card_container/save_word" to="add_card_container" method="_on_save_word_pressed"]
