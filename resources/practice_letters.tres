@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dpbahxl7u4odj"]
+
+[ext_resource type="FontFile" uid="uid://cumte68s3x462" path="res://assets/Amiri/Amiri-Regular.ttf" id="1_85gr6"]
+
+[resource]
+default_font = ExtResource("1_85gr6")
+default_font_size = 2
+RichTextLabel/colors/default_color = Color(0.501961, 0.180392, 0.0823529, 1)
+RichTextLabel/font_sizes/normal_font_size = 100
+RichTextLabel/fonts/normal_font = ExtResource("1_85gr6")

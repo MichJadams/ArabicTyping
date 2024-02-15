@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/TargetTextControl.gd" id="1_m5tyi"]
 [ext_resource type="Script" path="res://scripts/PracticeManager.gd" id="1_r3dn7"]
 [ext_resource type="Texture2D" uid="uid://bnj7oej4tusg2" path="res://assets/white_grid.png" id="2_y60vs"]
-[ext_resource type="Theme" uid="uid://mhsdqp7ljmrw" path="res://scripts/autoload/sandy.tres" id="3_xwx3d"]
+[ext_resource type="Theme" uid="uid://dpbahxl7u4odj" path="res://resources/practice_letters.tres" id="3_cscor"]
 [ext_resource type="Script" path="res://scripts/ProgressBar.gd" id="5_40twx"]
 [ext_resource type="Script" path="res://scripts/fetchArabicPronunciation.gd" id="6_kx75t"]
 
@@ -30,16 +30,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -276.0
-offset_top = -306.0
-offset_right = 267.0
-offset_bottom = -96.0
+offset_left = -669.0
+offset_top = -316.0
+offset_right = 93.0
+offset_bottom = 102.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("3_xwx3d")
-theme_override_font_sizes/normal_font_size = 60
+theme = ExtResource("3_cscor")
 bbcode_enabled = true
+text = "كَلب سريا"
 fit_content = true
+visible_characters_behavior = 4
 text_direction = 2
 language = "ar"
 script = ExtResource("1_m5tyi")
@@ -47,10 +48,10 @@ script = ExtResource("1_m5tyi")
 [node name="ColorRect" type="ColorRect" parent="TargetText"]
 show_behind_parent = true
 layout_mode = 1
-offset_left = -75.0
-offset_top = -64.5
-offset_right = 576.0
-offset_bottom = 206.5
+offset_left = 443.0
+offset_top = -384.0
+offset_right = 1094.0
+offset_bottom = -113.0
 
 [node name="InputText" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -65,7 +66,9 @@ offset_right = 233.0
 offset_bottom = 74.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_cscor")
 theme_override_font_sizes/normal_font_size = 60
+text = "test"
 script = ExtResource("1_m5tyi")
 
 [node name="Back" type="Button" parent="."]

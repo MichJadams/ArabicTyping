@@ -97,7 +97,7 @@ func get_next_word():
 	
 	if session_word_index >= words_for_this_session.size(): 
 		selected_learning_system.increment_session()
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 	else:
 		progress_bar.update_progress(session_word_index - SESSION_WORD_INDEX_OFFSET)
 		input_text = ""

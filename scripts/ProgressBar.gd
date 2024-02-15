@@ -1,13 +1,11 @@
 extends ColorRect
 
-var root
 var node_width
 var padding = 25
 var pip_childern = []
 var circle_filled = load("res://assets/practice/circle_filled.png")
 
 func _ready():
-	root = get_node("ProgressBar")
 	node_width = get_size().x
 	
 func generate_completion_pips(number_of_pips):

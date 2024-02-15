@@ -6,7 +6,7 @@
 
 [resource]
 default_font = ExtResource("1_na70i")
-default_font_size = 300
+default_font_size = 100
 Label/colors/font_color = Color(0.501961, 0.180392, 0.0823529, 1)
 Label/colors/font_outline_color = Color(0.607843, 0.509804, 0.0666667, 0.231373)
 Label/colors/font_shadow_color = Color(0.0823529, 0.403922, 0.501961, 0.407843)
