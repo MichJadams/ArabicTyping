@@ -107,4 +107,4 @@ func get_next_word():
 		current_practice_state = PracticeState.TYPING_TARGET_WORD
 	
 func _on_back_pressed():
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")

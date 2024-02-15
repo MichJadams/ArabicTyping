@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://b47n7y26txsc1"]
+
+[ext_resource type="Script" path="res://scenes/MainMenu.gd" id="1_ew30b"]
+[ext_resource type="Texture2D" uid="uid://bnj7oej4tusg2" path="res://assets/white_grid.png" id="2_3xchg"]
+[ext_resource type="Texture2D" uid="uid://c2xgwskrgb3in" path="res://assets/Pasted image 20240211130954.png" id="2_gkshe"]
+[ext_resource type="Theme" uid="uid://daset2wafmae7" path="res://assets/arabic_font.tres" id="2_hr63p"]
+
+[sub_resource type="Environment" id="Environment_lgone"]
+background_mode = 1
+background_color = Color(0.631373, 0, 0, 1)
+glow_enabled = true
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ew30b")
+
+[node name="PastedImage20240211130954" type="Sprite2D" parent="."]
+position = Vector2(1078, -35)
+scale = Vector2(2.52829, 2.65322)
+texture = ExtResource("2_gkshe")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lgone")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = 2.0
+offset_top = 5.0
+offset_right = 1918.0
+offset_bottom = 1080.0
+color = Color(1, 1, 0.294118, 1)
+
+[node name="WhiteGrid" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.729412)
+position = Vector2(957, 546)
+texture = ExtResource("2_3xchg")
+
+[node name="to_settings" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1451.0
+offset_top = 152.0
+offset_right = 1803.0
+offset_bottom = 261.0
+text = "settings"
+
+[node name="to_practice" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1446.0
+offset_top = 17.0
+offset_right = 1807.0
+offset_bottom = 123.0
+text = "Practice"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 178.0
+offset_right = 1550.0
+offset_bottom = 707.0
+theme = ExtResource("2_hr63p")
+text = "ارابيست"
+
+[connection signal="pressed" from="to_settings" to="." method="_on_to_settings_pressed"]
+[connection signal="pressed" from="to_practice" to="." method="_on_to_practice_pressed"]
