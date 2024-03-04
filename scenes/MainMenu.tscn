@@ -3,33 +3,39 @@
 [ext_resource type="Script" path="res://scenes/MainMenu.gd" id="1_ew30b"]
 [ext_resource type="Texture2D" uid="uid://bnj7oej4tusg2" path="res://assets/white_grid.png" id="2_3xchg"]
 [ext_resource type="Theme" uid="uid://daset2wafmae7" path="res://assets/arabic_font.tres" id="2_hr63p"]
+[ext_resource type="Texture2D" uid="uid://diqa8t35vb0c1" path="res://assets/pyramid_background_resized.png" id="2_r2urp"]
 [ext_resource type="Theme" uid="uid://coswrtyk7pho7" path="res://assets/main_menu_buttons.tres" id="4_is3xk"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mfiqp"]
-load_path = "res://.godot/imported/Pasted image 20240211130954.png-82b89211755b94741221301cf4ae5350.ctex"
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ew30b")
 
-[node name="PastedImage20240211130954" type="Sprite2D" parent="."]
-position = Vector2(941, 523)
-scale = Vector2(0.976311, 1.02455)
-texture = SubResource("CompressedTexture2D_mfiqp")
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -985.0
+offset_top = -532.0
+offset_right = 990.0
+offset_bottom = 586.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.94902, 0.741176, 1)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 2.0
-offset_top = 5.0
-offset_right = 1918.0
-offset_bottom = 1080.0
-color = Color(1, 1, 0.294118, 1)
+[node name="PyramidBackgroundResized" type="Sprite2D" parent="."]
+position = Vector2(12, -92)
+scale = Vector2(1.89063, 1.89063)
+texture = ExtResource("2_r2urp")
 
 [node name="WhiteGrid" type="Sprite2D" parent="."]
 visible = false
@@ -39,30 +45,47 @@ texture = ExtResource("2_3xchg")
 
 [node name="to_settings" type="Button" parent="."]
 layout_mode = 0
-offset_left = 716.0
-offset_top = 521.0
-offset_right = 888.0
-offset_bottom = 574.0
+offset_left = -781.0
+offset_top = -181.0
+offset_right = -475.0
+offset_bottom = -105.0
 theme = ExtResource("4_is3xk")
 text = "settings"
 
 [node name="to_practice" type="Button" parent="."]
 layout_mode = 0
-offset_left = 715.0
-offset_top = 462.0
-offset_right = 889.0
-offset_bottom = 513.0
+offset_left = -680.0
+offset_top = -82.0
+offset_right = -390.0
+offset_bottom = -1.0
 theme = ExtResource("4_is3xk")
 text = "Practice"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 795.0
-offset_top = 271.0
-offset_right = 1093.0
-offset_bottom = 448.0
+offset_left = -434.0
+offset_top = -507.0
+offset_right = 722.0
+offset_bottom = -155.0
 theme = ExtResource("2_hr63p")
-text = "ارابيست"
+text = "Second"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 160
+metadata/_edit_group_ = true
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 333.0
+offset_top = -330.0
+offset_right = 803.0
+offset_bottom = 22.0
+theme = ExtResource("2_hr63p")
+text = "Script"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 160
+metadata/_edit_group_ = true
 
 [connection signal="pressed" from="to_settings" to="." method="_on_to_settings_pressed"]
 [connection signal="pressed" from="to_practice" to="." method="_on_to_practice_pressed"]

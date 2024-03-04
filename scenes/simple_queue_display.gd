@@ -19,3 +19,7 @@ func _draw_cards():
 		var card = LeitnerBoxItem.new(display_word, self.remove_word)
 		#card.custom_minimum_size.x = 500
 		add_child(card)
+
+func _on_button_2_pressed():
+	if LearningSystemsManager.clear_simple_queu():
+		_draw_cards()

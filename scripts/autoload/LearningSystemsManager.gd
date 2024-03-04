@@ -110,6 +110,10 @@ func remove_word_from_leitner_system(word_id):
 			save_learning_system_data()
 			return true 
 	return false 
+func clear_simple_queu():
+	learningSystemsData.simple_queue = []
+	save_learning_system_data()
+	return true 
 
 func get_simple_queue_words():
 	return learningSystemsData.simple_queue

@@ -55,4 +55,13 @@ vertical_scroll_mode = 0
 layout_mode = 2
 script = ExtResource("3_6tmnc")
 
+[node name="clear_simple_queue" type="Button" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 101.0
+offset_right = 121.0
+offset_bottom = 132.0
+text = "Clear Queue"
+
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="clear_simple_queue" to="ScrollContainer2/HBoxContainer" method="_on_button_2_pressed"]

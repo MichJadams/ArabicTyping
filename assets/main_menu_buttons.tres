@@ -1,8 +1,14 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://coswrtyk7pho7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0f7j"]
-bg_color = Color(0.0823529, 0.403922, 0.501961, 0.407843)
+bg_color = Color(0.0823529, 0.403922, 0.501961, 0.627451)
+skew = Vector2(-1, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.396293, 0.212236, 0.0879734, 0.647059)
 
 [resource]
-Button/font_sizes/font_size = 35
+Button/font_sizes/font_size = 55
 Button/styles/normal = SubResource("StyleBoxFlat_b0f7j")
