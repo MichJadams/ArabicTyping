@@ -87,5 +87,14 @@ vertical_alignment = 1
 justification_flags = 160
 metadata/_edit_group_ = true
 
+[node name="to_sentences" type="Button" parent="."]
+layout_mode = 0
+offset_left = -650.0
+offset_top = 70.0
+offset_right = -314.0
+offset_bottom = 177.0
+text = "Sentences"
+
 [connection signal="pressed" from="to_settings" to="." method="_on_to_settings_pressed"]
 [connection signal="pressed" from="to_practice" to="." method="_on_to_practice_pressed"]
+[connection signal="pressed" from="to_sentences" to="." method="_on_to_sentences_pressed"]

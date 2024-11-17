@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://dho45lmrb2t1h"]
+
+[ext_resource type="Script" path="res://scenes/practice_sentences.gd" id="1_scs1s"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_scs1s")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 1385.0
+offset_bottom = 878.0
+
+[node name="api_input" type="TextEdit" parent="GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_next = NodePath("../arabic_input")
+
+[node name="arabic_input" type="TextEdit" parent="GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+focus_next = NodePath("../english_input")
+focus_previous = NodePath("../api_input")
+
+[node name="english_input" type="TextEdit" parent="GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+focus_next = NodePath("../../grade")
+focus_previous = NodePath("../arabic_input")
+
+[node name="corrected_arabic" type="TextEdit" parent="GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+focus_next = NodePath("../arabic_input")
+focus_previous = NodePath("../../grade")
+
+[node name="grade" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1497.0
+offset_top = 574.0
+offset_right = 1812.0
+offset_bottom = 668.0
+focus_next = NodePath("../GridContainer/corrected_arabic")
+focus_previous = NodePath("../GridContainer/english_input")
+text = "Submit!"
+
+[node name="Grading Response" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 623.0
+offset_right = 1430.0
+offset_bottom = 688.0
+
+[connection signal="focus_exited" from="GridContainer/api_input" to="." method="_on_api_input_focus_exited"]

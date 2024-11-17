@@ -12,7 +12,7 @@ config_version=5
 
 config/name="ArabicTyping"
 run/main_scene="res://scenes/loading_screen.tscn"
-config/features=PackedStringArray("4.2", "Forward Plus")
+config/features=PackedStringArray("4.3", "Forward Plus")
 run/low_processor_mode=true
 run/delta_smoothing=false
 boot_splash/bg_color=Color(0.980392, 0.964706, 0.952941, 1)
