@@ -6,13 +6,20 @@ extends Control
 @onready var english_input: TextEditTab = $GridContainer/english_input
 @onready var grading_response: RichTextLabel = $"GridContainer/Grading Response"
 @onready var file_dialog: FileDialog = $file_to_save_to/FileDialog
+@onready var corrected_arabic: TextEditTab = $GridContainer/corrected_arabic
 
+const sentence_location = "user://save/"
+const sentences_file_name = "sentences.tres"
 const uri = "https://api.openai.com/v1/chat/completions"
 var api_key = ""
+var sentenceSaver = SentenceSaver.new()
 
+func _ready() -> void:
+	var sentenceSaver = ResourceLoader.load(sentence_location + sentences_file_name)
+	
 func _on_grade_pressed() -> void:
 	api_key = api_input.text
-	var arabic = arabic_input.text # "كم تلميز بصف ؟ " # 
+	var arabic = arabic_input.text # "كم تلميز بصف ؟ # 
 	var english = english_input.text # "How many students do you have?"
 	var body = JSON.new().stringify({
 	  "model": "gpt-3.5-turbo-0125",  
@@ -40,9 +47,19 @@ func _on_get_ai_answer_request_completed(result: int, response_code: int, header
 		grading_response.text = "There was an issue " + String(response)
 
 func _on_save_pressed() -> void:
-		
-	pass # Replace with function body.
-
-func _on_file_to_save_to_pressed() -> void:
-	file_dialog.show()
-	pass # Replace with function body.
+	var today = Time.get_date_string_from_system()
+	var thing_to_save = {
+		"arabic": arabic_input.text,
+		"english_input": english_input.text,
+		"corrected_arabic": corrected_arabic.text
+	}
+	if today in sentenceSaver.sentences:
+		sentenceSaver.sentences[today].append(thing_to_save)
+	else: 
+		sentenceSaver.sentences[today] = [thing_to_save]
+	ResourceSaver.save(sentenceSaver, sentence_location + sentences_file_name)
+	arabic_input.text = ""
+	english_input.text = ""
+	corrected_arabic.text = ""
+	grading_response.text = "Previous sentence saved!"
+	
