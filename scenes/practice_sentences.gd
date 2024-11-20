@@ -15,15 +15,19 @@ var api_key = ""
 var sentenceSaver = SentenceSaver.new()
 
 func _ready() -> void:
-	var sentenceSaver = ResourceLoader.load(sentence_location + sentences_file_name)
+	sentenceSaver = ResourceLoader.load(sentence_location + sentences_file_name)
 	
 func _on_grade_pressed() -> void:
 	api_key = api_input.text
 	var arabic = arabic_input.text # "كم تلميز بصف ؟ # 
 	var english = english_input.text # "How many students do you have?"
 	var body = JSON.new().stringify({
-	  "model": "gpt-3.5-turbo-0125",  
+	  "model": "gpt-4o-mini",  
 	  "messages": [
+		{
+			"role": "system",
+			"content": "You are teaching me Levantine Arabic and are going to correct some of the sentences I have created for practice. If the sentence is gramatically correct, let me know! If there is a better way to convey the idea of the sentence or my grammer is incorrect tell me."
+	  	},
 		{
 		  "role": "user",
 		  "content": "I have a sentence I would like to try writing in Levantine Arabic. Here is the sentence in english "  + english + " and here is my attempt in arabic " + arabic + ". Can you correct the arabic for me and give a brief expanation of each part of the sentence?"
